@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchOpenWeatherData } from '../../utils/api';
-import { Card, CardContent } from '@material-ui/core';
+import { Box, Card, CardContent } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import './WeatherCard.css';
 import { OpenWeatherData } from '../../utils/weather.interface';
@@ -20,15 +20,19 @@ const WeatherCard: React.FC<{ city: string }> = ({ city }) => {
     return <div>Loading...</div>;
   }
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5">{weatherData.name}</Typography>
-        <Typography variant="body1">{weatherData.main.temp}</Typography>
-        <Typography variant="body1">
-          Feels like: {weatherData.main.feels_like}
-        </Typography>
-      </CardContent>
-    </Card>
+    <Box mx={'4px'} my={'16px'}>
+      <Card>
+        <CardContent>
+          <Typography variant="h5">{weatherData.name}</Typography>
+          <Typography variant="body1">
+            {Math.round(weatherData.main.temp)}
+          </Typography>
+          <Typography variant="body1">
+            Feels like: {Math.round(weatherData.main.feels_like)}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Box>
   );
 };
 
