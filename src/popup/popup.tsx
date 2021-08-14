@@ -1,15 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import WeatherCard from './WeatherCard';
+import React, { useState } from 'react';
 import '@fontsource/roboto';
+import ReactDOM from 'react-dom';
 import './popup.css';
+import WeatherCard from './WeatherCard';
+import WeatherCardContainer from './WeatherCardContainer';
 
 const App: React.FC<{}> = () => {
+  const [cities, setCities] = useState<string[]>([
+    'London',
+    'Bournemouth',
+    'Errori'
+  ]);
   return (
     <div>
-      <WeatherCard city="London" />
-      <WeatherCard city="Bournemouth" />
-      <WeatherCard city="asd" />
+      {cities.map((city, index) => (
+        <WeatherCard city={city} key={index} />
+      ))}
     </div>
   );
 };
