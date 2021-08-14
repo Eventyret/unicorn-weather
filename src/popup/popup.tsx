@@ -6,7 +6,9 @@ import { fetchOpenWeatherData } from '../utils/api';
 const App: React.FC<{}> = () => {
   useEffect(() => {
     fetchOpenWeatherData('London')
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+      })
       .catch((err) => console.log(err));
   }, []);
   return (
