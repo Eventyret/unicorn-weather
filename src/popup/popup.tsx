@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './popup.css';
 import WeatherCard from './WeatherCard';
+import './popup.css';
+import '@fontsource/roboto';
 
 const App: React.FC<{}> = () => {
   return (
