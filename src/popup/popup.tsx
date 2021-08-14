@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WeatherCard from './WeatherCard';
-import './popup.css';
 import '@fontsource/roboto';
+import './popup.css';
 
 const App: React.FC<{}> = () => {
   return (
     <div>
       <WeatherCard city="London" />
       <WeatherCard city="Bournemouth" />
+      <WeatherCard city="asd" />
     </div>
   );
 };
