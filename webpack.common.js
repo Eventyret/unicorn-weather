@@ -14,17 +14,17 @@ module.exports = {
   module: {
     rules: [
       {
-        use: 'ts-loader',
         test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/
       },
       {
-        use: ['style-loader', 'css-loader'],
-        test: /\.css$/i
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
       },
       {
-        type: 'asset/resource',
-        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/i
+        test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg)$/,
+        type: 'asset/resource'
       }
     ]
   },
