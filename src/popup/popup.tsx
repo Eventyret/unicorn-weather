@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
-import '@fontsource/roboto';
-import ReactDOM from 'react-dom';
-import { Box, InputBase, IconButton, Paper, Grid } from '@material-ui/core';
+import { Box, Grid, IconButton, InputBase, Paper } from '@material-ui/core';
 import { Add as AddIcon } from '@material-ui/icons';
-import WeatherCard from './WeatherCard';
-import WeatherCardContainer from './WeatherCardContainer';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import './popup.css';
+import '@fontsource/roboto';
+import WeatherCard from './WeatherCard';
 
 const App: React.FC<{}> = () => {
     const [cities, setCities] = useState<string[]>([
         'London',
         'Bournemouth',
-        'Errori'
     ]);
 
     const [cityInput, setCityInput] = useState<string>('');
+    
+    const handleCityButtonClick = (): void => {
+        if (cityInput === '') return;
+        setCities([...cities, cityInput]);
+        setCityInput('');
+    };
+    const handlecityDeleteClick = (index: number): void => {
+        cities.splice(index, 1);
+        setCities([...cities]);
+    };
     return (
         <Box mx={'8px'} my={'16px'}>
             <Grid container>
@@ -26,7 +34,7 @@ const App: React.FC<{}> = () => {
                                 value={cityInput}
                                 onChange={(event) => setCityInput(event.target.value)}
                             />
-                            <IconButton>
+                            <IconButton onClick={handleCityButtonClick}>
                                 <AddIcon></AddIcon>
                             </IconButton>
                         </Box>
@@ -34,8 +42,9 @@ const App: React.FC<{}> = () => {
                 </Grid>
             </Grid>
             {cities.map((city, index) => (
-                <WeatherCard city={city} key={index} />
+                <WeatherCard city={city} key={index} onDelete={() =>{}} />
             ))}
+            <Box height="16px" />
         </Box>
     );
 };
